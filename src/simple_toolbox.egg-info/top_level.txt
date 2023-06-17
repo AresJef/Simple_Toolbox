@@ -1,6 +1,1 @@
-dt_parser_c
-dt_util_c
-math_util_c
-path_util_c
 simple_toolbox
-str_util_c
