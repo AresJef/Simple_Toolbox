@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: simple-toolbox
-Version: 0.1.9.1
+Version: 0.1.10.0
 Summary: A simple collection of python utils
 Author: Jiefu Chen
 Author-email: keppa1991@163.com
@@ -17,16 +17,10 @@ License-File: LICENSE
 
 ### A simple collection of python utils.
 
-Created to be used in a project, this package is published to gihub and 
-pypi for ease of management and installation across different modules.
+Created to be used in a project, this package is published to gihub 
+for ease of management and installation across different modules.
 
 ### Installation
-install using `pip`
-
-``` bash
-pip install simple_toolbox
-```
-
 install from `github`
 
 ``` bash

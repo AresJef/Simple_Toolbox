@@ -1,9 +1,7 @@
 import os
+from setuptools import setup
 from Cython.Build import cythonize
 from distutils.extension import Extension
-from setuptools import setup, find_packages
-
-CYTHON_PACKAGE = "simple_toolbox/cython_core"
 
 
 def build_extension(cython_pkg: str) -> tuple[list[Extension]]:
@@ -29,9 +27,8 @@ def build_extension(cython_pkg: str) -> tuple[list[Extension]]:
 
 
 setup(
-    packages=find_packages(include=["simple_toolbox"]),
     ext_modules=cythonize(
-        build_extension(CYTHON_PACKAGE),
+        build_extension("simple_toolbox/cython_core"),
         compiler_directives={"language_level": "3"},
     ),
 )

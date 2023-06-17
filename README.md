@@ -1,15 +1,9 @@
 ### A simple collection of python utils.
 
-Created to be used in a project, this package is published to gihub and 
-pypi for ease of management and installation across different modules.
+Created to be used in a project, this package is published to gihub 
+for ease of management and installation across different modules.
 
 ### Installation
-install using `pip`
-
-``` bash
-pip install simple_toolbox
-```
-
 install from `github`
 
 ``` bash
