@@ -5,7 +5,7 @@ Summary: A simple collection of python utils
 Author: Jiefu Chen
 Author-email: keppa1991@163.com
 License: MIT
-Keywords: utils
+Keywords: simple_toolbox,utils
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: Unix

@@ -3,18 +3,20 @@ from Cython.Build import cythonize
 from distutils.extension import Extension
 from setuptools import setup, find_packages
 
+CYTHON_PACKAGE = "simple_toolbox/cython_core"
 
-def build_extension(cython_dir: str) -> list[Extension]:
-    dir = os.path.abspath(os.path.dirname(__file__)) + "/src/" + cython_dir
+
+def build_extension(cython_pkg: str) -> tuple[list[Extension]]:
+    dir = os.path.abspath(os.path.dirname(__file__)) + "/src/" + cython_pkg
     pyx_list = [i for i in os.listdir(dir) if i.endswith(".pyx")]
     pyx_src = [os.path.join(dir, i) for i in pyx_list]
     pyx_name = [
-        cython_dir.replace("/", ".") + "." + i[:-4].replace("/", ".") for i in pyx_list
+        cython_pkg.replace("/", ".") + "." + i[:-4].replace("/", ".") for i in pyx_list
     ]
     return [
         Extension(
             name=name,
-            sources=[src.replace(".pyx", ".c"), src],
+            sources=[src],
             extra_compile_args=[
                 "-Wno-unreachable-code-fallthrough",
                 "-Wno-unused-function",
@@ -27,8 +29,9 @@ def build_extension(cython_dir: str) -> list[Extension]:
 
 
 setup(
+    packages=find_packages(include=["simple_toolbox"]),
     ext_modules=cythonize(
-        build_extension("simple_toolbox/cython_core"),
+        build_extension(CYTHON_PACKAGE),
         compiler_directives={"language_level": "3"},
     ),
 )
