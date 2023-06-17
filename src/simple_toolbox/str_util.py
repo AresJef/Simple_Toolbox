@@ -1,15 +1,15 @@
 # /usr/bin/python
 # -*- coding: UTF-8 -*-
-from simple_toolkits.cython_core.str_util_c import parse_float as _parse_float
-from simple_toolkits.cython_core.str_util_c import parse_int as _parse_int
-from simple_toolkits.cython_core.str_util_c import parce_pct as _parce_pct
-from simple_toolkits.cython_core.str_util_c import replace_char as _replace_char
-from simple_toolkits.cython_core.str_util_c import replace_chars as _replace_chars
-from simple_toolkits.cython_core.str_util_c import (
+from simple_toolbox.cython_core.str_util_c import parse_float as _parse_float
+from simple_toolbox.cython_core.str_util_c import parse_int as _parse_int
+from simple_toolbox.cython_core.str_util_c import parce_pct as _parce_pct
+from simple_toolbox.cython_core.str_util_c import replace_char as _replace_char
+from simple_toolbox.cython_core.str_util_c import replace_chars as _replace_chars
+from simple_toolbox.cython_core.str_util_c import (
     replace_multi_chars as _replace_multi_chars,
 )
-from simple_toolkits.cython_core.str_util_c import extract_alphanumeric_underscore
-from simple_toolkits.cython_core.str_util_c import remove_indent as _remove_indent
+from simple_toolbox.cython_core.str_util_c import extract_alphanumeric_underscore
+from simple_toolbox.cython_core.str_util_c import remove_indent as _remove_indent
 
 __all__ = [
     "parse_float",

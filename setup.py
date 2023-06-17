@@ -1,23 +1,32 @@
-from setuptools import setup
+import os
 from Cython.Build import cythonize
 from distutils.extension import Extension
+from setuptools import setup, find_packages
+
+
+def build_extension(cython_dir: str) -> list[Extension]:
+    dir = os.path.abspath(os.path.dirname(__file__)) + cython_dir
+    pyx_list = [i for i in os.listdir(dir) if i.endswith(".pyx")]
+    return [
+        Extension(
+            name=pyx.replace(".pyx", ""),
+            sources=[os.path.join(dir, pyx)],
+            extra_compile_args=[
+                "-Wno-unreachable-code-fallthrough",
+                "-Wno-unused-function",
+            ]
+            if pyx == "dt_parser_c.pyx"
+            else [],
+        )
+        for pyx in pyx_list
+    ]
+
 
 setup(
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
     ext_modules=cythonize(
-        [
-            Extension(
-                name="simple_toolkits.cython_core.dt_parser_c",
-                sources=["src/simple_toolkits/cython_core/dt_parser_c.pyx"],
-                extra_compile_args=[
-                    "-Wno-unreachable-code-fallthrough",
-                    "-Wno-unused-function",
-                ],
-            ),
-            "src/simple_toolkits/cython_core/dt_util_c.pyx",
-            "src/simple_toolkits/cython_core/math_util_c.pyx",
-            "src/simple_toolkits/cython_core/path_util_c.pyx",
-            "src/simple_toolkits/cython_core/str_util_c.pyx",
-        ],
+        build_extension("/src/simple_toolbox/cython_core"),
         compiler_directives={"language_level": "3"},
     ),
 )

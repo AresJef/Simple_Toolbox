@@ -1,5 +1,5 @@
 Metadata-Version: 2.1
-Name: simple-toolkits
+Name: simple-toolbox
 Version: 0.1.4
 Summary: A simple collection of python utils
 Author: Jiefu Chen
@@ -24,13 +24,13 @@ pypi for ease of management and installation across different modules.
 install using `pip`
 
 ``` bash
-pip install simple_toolkits
+pip install simple_toolbox
 ```
 
 install from `github`
 
 ``` bash
-pip install git+https://github.com/AresJef/Simple_Toolkits.git
+pip install git+https://github.com/AresJef/Simple_Toolbox.git
 ```
 
 ### Compatibility
@@ -47,9 +47,9 @@ interesting for me personally to understand how dateutil actual works
 and I have learnt so much through this process.
 
 ### Acknowledgements
-simple_toolkits is based on several open-source repositories.
+simple_toolbox is based on several open-source repositories.
 
-simple_toolkits makes modification of the following open-source repositories:
+simple_toolbox makes modification of the following open-source repositories:
 - [dateutil](https://github.com/dateutil/dateutil/)
 
 

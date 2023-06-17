@@ -2,9 +2,9 @@
 # -*- coding: UTF-8 -*-
 import os as _os
 import shutil as _shutil
-from simple_toolkits.cython_core.path_util_c import list_directory
-from simple_toolkits.cython_core.path_util_c import clean_path as _clean_path
-from simple_toolkits.cython_core.path_util_c import offset_path as _offset_path
+from simple_toolbox.cython_core.path_util_c import list_directory
+from simple_toolbox.cython_core.path_util_c import clean_path as _clean_path
+from simple_toolbox.cython_core.path_util_c import offset_path as _offset_path
 
 __all__ = [
     "clean",

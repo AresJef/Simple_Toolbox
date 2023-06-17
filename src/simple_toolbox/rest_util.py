@@ -3,7 +3,7 @@
 import asyncio
 from math import floor as _math_floor
 from time import perf_counter as _perf_counter
-from simple_toolkits.dt_util import seconds_to_time as _seconds_to_time
+from simple_toolbox.dt_util import seconds_to_time as _seconds_to_time
 
 __all__ = ["ProgressBar"]
 

@@ -13,12 +13,12 @@ from pandas import to_datetime as _pd_to_datetime
 from pandas import TimedeltaIndex as _TimedeltaIndex
 from pandas import Series as _Series, Timestamp as _Timestamp
 
-from simple_toolkits.cython_core.dt_parser_c import parser as _dt_parser
-from simple_toolkits.cython_core.dt_parser_c import ctimedelta as ctimedelta_c
-from simple_toolkits.cython_core.dt_parser_c import parse_common as _parse_common
-from simple_toolkits.cython_core.dt_parser_c import parse_exacts as _parse_exacts
-from simple_toolkits.cython_core.dt_util_c import unix_timestamp as _unix_timestamp
-from simple_toolkits.cython_core.dt_util_c import seconds_to_time as _seconds_to_time
+from simple_toolbox.cython_core.dt_parser_c import parser as _dt_parser
+from simple_toolbox.cython_core.dt_parser_c import ctimedelta as ctimedelta_c
+from simple_toolbox.cython_core.dt_parser_c import parse_common as _parse_common
+from simple_toolbox.cython_core.dt_parser_c import parse_exacts as _parse_exacts
+from simple_toolbox.cython_core.dt_util_c import unix_timestamp as _unix_timestamp
+from simple_toolbox.cython_core.dt_util_c import seconds_to_time as _seconds_to_time
 
 __all__ = [
     "TimeUtils",
