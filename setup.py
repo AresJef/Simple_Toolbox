@@ -23,8 +23,6 @@ def build_extension(cython_dir: str) -> list[Extension]:
 
 
 setup(
-    packages=find_packages(where="src"),
-    package_dir={"": "src"},
     ext_modules=cythonize(
         build_extension("/src/simple_toolbox/cython_core"),
         compiler_directives={"language_level": "3"},

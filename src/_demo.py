@@ -12,8 +12,4 @@ def demo():
 
 
 if __name__ == "__main__":
-    # demo()
-
-    import os
-
-    print(os.path.abspath(os.path.dirname(__file__)))
+    demo()
