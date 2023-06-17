@@ -7,13 +7,13 @@ pypi for ease of management and installation across different modules.
 install using `pip`
 
 ``` bash
-pip install simple_toolkit
+pip install simple_toolkits
 ```
 
 install from `github`
 
 ``` bash
-pip install git+https://github.com/AresJef/Simple_Toolkit.git
+pip install git+https://github.com/AresJef/Simple_Toolkits.git
 ```
 
 ### Compatibility
@@ -30,9 +30,9 @@ interesting for me personally to understand how dateutil actual works
 and I have learnt so much through this process.
 
 ### Acknowledgements
-simple_toolkit is based on several open-source repositories.
+simple_toolkits is based on several open-source repositories.
 
-simple_toolkit makes modification of the following open-source repositories:
+simple_toolkits makes modification of the following open-source repositories:
 - [dateutil](https://github.com/dateutil/dateutil/)
 
 

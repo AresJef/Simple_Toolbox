@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 from decimal import Decimal as _Decimal
-from simple_toolkit.cython_core.math_util_c import round_away as _round_away
+from simple_toolkits.cython_core.math_util_c import round_away as _round_away
 
 
 # Round half away from zero
