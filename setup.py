@@ -14,7 +14,7 @@ def build_extension(cython_dir: str) -> list[Extension]:
     return [
         Extension(
             name=name,
-            sources=[src],
+            sources=[src.replace(".pyx", ".c"), src],
             extra_compile_args=[
                 "-Wno-unreachable-code-fallthrough",
                 "-Wno-unused-function",
