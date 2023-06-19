@@ -50,6 +50,7 @@ def chunk(lst: list, *, chunk_size: int = None, chunk_count: int = None) -> list
     :return: `list` of chunked `list`
     """
 
+    # Return empty list
     if not lst:
         return [lst]
 
