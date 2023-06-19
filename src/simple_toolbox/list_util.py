@@ -53,10 +53,6 @@ def chunk(lst: list, *, chunk_size: int = None, chunk_count: int = None) -> list
     if not lst:
         return [lst]
 
-    # Adjust data type
-    if isinstance(lst, set):
-        lst = list(lst)
-
     # Determine the length of the original list
     _len_ = len(lst)
 
