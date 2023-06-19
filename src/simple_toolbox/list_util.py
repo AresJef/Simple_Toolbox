@@ -3,7 +3,25 @@
 from math import ceil as _math_ceil
 from decimal import Decimal as _Decimal
 
-__all__ = ["drop_duplicates", "chunk", "concat_list", "flatten", "decimal_to_float"]
+__all__ = [
+    "has_duplicates",
+    "drop_duplicates",
+    "chunk",
+    "concat_list",
+    "flatten",
+    "decimal_to_float",
+]
+
+
+# . has duplicates
+def has_duplicates(lst: list) -> bool:
+    """Check if a `list` has duplicates
+
+    :param lst: list to be processed
+    :return: True if the `list` has duplicates, False otherwise
+    """
+
+    return len(lst) != len(set(lst))
 
 
 # . drop duplicates
