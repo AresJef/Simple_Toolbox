@@ -29,41 +29,44 @@ __all__ = [
     "sys_uuid",
 ]
 
+_OS_MAP: dict[str, str] = {
+    "darwin": "mac",
+    "linux": "linux",
+    "linux2": "linux",
+    "win32": "win",
+    "cygwin": "win",
+    "msys": "win",
+    "os2": "os2",
+    "os2emx": "os2",
+    "riscos": "riscos",
+    "atheos": "atheos",
+    "freebsd": "freebsd",
+    "freebsd6": "freebsd",
+    "freebsd7": "freebsd",
+    "freebsd8": "freebsd",
+    "freebsdN": "freebsd",
+}
+
 
 def os() -> str:
-    """Return the operating system of the computer
-
-    :return: all possible values: `mac`, `linux`, `win`, `os2`, `riscos`, `atheos`, `freebsd`, `unknown`
+    """Get the name of the operating system.
+    All possible values: `"mac"`, `"linux"`, `"win"`,
+    `"os2"`, `"riscos"`, `"atheos"`, `"freebsd"`, `"unknown"`
     """
 
-    if (pl := _sys_platform) == "darwin":
-        return "mac"
-    elif pl in ("linux", "linux2"):
-        return "linux"
-    elif pl in ("win32", "cygwin", "msys"):
-        return "win"
-    elif pl in ("os2", "os2emx"):
-        return "os2"
-    elif pl == "riscos":
-        return "riscos"
-    elif pl == "atheos":
-        return "atheos"
-    elif pl in ("freebsd", "freebsd6", "freebsd7", "freebsd8", "freebsdN"):
-        return "freebsd"
-    else:
-        return "unknown"
+    return _OS_MAP.get(_sys_platform, "unknown")
 
 
 def version() -> str:
-    """Return the operating system version"""
+    """Return the operating system version."""
 
     return _platform()
 
 
 def serial_number() -> str:
-    """Return the serial number of the computer"""
+    """Return the serial number of the computer."""
 
-    if (os_ := os()) == "mac":
+    if os() == "mac":
         return (
             _check_output(
                 "system_profiler SPHardwareDataType | awk '/Serial Number/ {print $4}'",
@@ -77,15 +80,17 @@ def serial_number() -> str:
 
 
 def cpu_count() -> int:
-    """Return the number of CPU core counts of the computer"""
+    """Return the number of CPU core counts of
+    the computer.
+    """
 
     return _cpu_count()
 
 
 def cpu_type() -> str:
-    """Return the CPU type of the computer"""
+    """Return the CPU type of the computer."""
 
-    if (os_ := os()) == "mac":
+    if os() == "mac":
         return (
             _check_output(
                 "sysctl -n machdep.cpu.brand_string",
@@ -99,9 +104,9 @@ def cpu_type() -> str:
 
 
 def memory_size(unit: str = "GB") -> float:
-    """Return the memory size of the computer
+    """Return the memory size of the computer.
 
-    :param unit: unit of the memory size, default: `GB`
+    :param unit: unit of the memory size, default: `GB`.
         available units: `GB`, `MB`, `KB`, `Byte`
     """
 
@@ -109,13 +114,17 @@ def memory_size(unit: str = "GB") -> float:
 
 
 def memory_free(unit: str = "GB", percent: bool = False) -> float:
-    """Return free memory size of the computer at the current state
+    """Return free memory size of the computer at the
+    current state.
 
-    :param unit: unit of the memory size, default: `GB`
+    :param unit: unit of the memory size, default: `GB`.
         available units: `GB`, `MB`, `KB`, `Byte`
-    :param percent: whether to return the percentage of the available memory, default: `False`
-        - If `True`, the `unit` parameter is invalid and the return value is the percentage of the available memory
-        - If `False`, the return value is the available memory size in corresponding size `unit`
+    :param percent: whether to return the percentage of the
+    available memory, default: `False`.
+        - If `True`, the `unit` parameter is invalid and the
+          return value is the percentage of the available memory.
+        - If `False`, the return value is the available memory
+          size in corresponding size `unit`.
     """
 
     if percent:
@@ -125,13 +134,18 @@ def memory_free(unit: str = "GB", percent: bool = False) -> float:
 
 
 def memory_used(unit: str = "GB", percent: bool = False) -> float:
-    """Return used memory size of the computer at the current state
+    """Return used memory size of the computer at the
+    current state.
 
-    :param unit: unit of the memory size, default: `GB`
+    :param unit: unit of the memory size, default: `GB`.
         available units: `GB`, `MB`, `KB`, `Byte`
-    :param percent: whether to return the percentage of the used memory, default: `False`
-        - If `True`, the `unit` parameter is invalid and the return value is the percentage of the used memory
-        - If `False`, the return value is the used memory size in corresponding size `unit`
+    :param percent: whether to return the percentage of
+    the used memory, default: `False`.
+        - If `True`, the `unit` parameter is invalid and
+          the return value is the percentage of the used
+          memory.
+        - If `False`, the return value is the used memory
+          size in corresponding size `unit`.
     """
 
     if percent:
@@ -141,9 +155,9 @@ def memory_used(unit: str = "GB", percent: bool = False) -> float:
 
 
 def hdd_size(unit: str = "GB") -> float:
-    """Return the hard disk size of the computer
+    """Return the hard disk size of the computer.
 
-    :param unit: unit of the hard disk size, default: `GB`
+    :param unit: unit of the hard disk size, default: `GB`.
         available units: `GB`, `MB`, `KB`, `Byte`
     """
 
@@ -152,13 +166,18 @@ def hdd_size(unit: str = "GB") -> float:
 
 
 def hdd_free(unit: str = "GB", percent: bool = False) -> float:
-    """Return free hard disk size of the computer at the current state
+    """Return free hard disk size of the computer at
+    the current state.
 
-    :param unit: unit of the hard disk size, default: `GB`
+    :param unit: unit of the hard disk size, default: `GB`.
         available units: `GB`, `MB`, `KB`, `Byte`
-    :param percent: whether to return the percentage of the available hard disk, default: `False`
-        - If `True`, the `unit` parameter is invalid and the return value is the percentage of the available hard disk
-        - If `False`, the return value is the available hard disk size in corresponding size `unit`
+    :param percent: whether to return the percentage of the
+    available hard disk, default: `False`.
+        - If `True`, the `unit` parameter is invalid and
+          the return value is the percentage of the available
+          hard disk.
+        - If `False`, the return value is the available hard
+          disk size in corresponding size `unit`.
     """
 
     total, _, free = _disk_usage("/")
@@ -169,13 +188,17 @@ def hdd_free(unit: str = "GB", percent: bool = False) -> float:
 
 
 def hdd_used(unit: str = "GB", percent: bool = False) -> float:
-    """Return used hard disk size of the computer at the current state
+    """Return used hard disk size of the computer at
+    the current state.
 
-    :param unit: unit of the hard disk size, default: `GB`
+    :param unit: unit of the hard disk size, default: `GB`.
         available units: `GB`, `MB`, `KB`, `Byte`
-    :param percent: whether to return the percentage of the used hard disk, default: `False`
-        - If `True`, the `unit` parameter is invalid and the return value is the percentage of the used hard disk
-        - If `False`, the return value is the used hard disk size in corresponding size `unit`
+    :param percent: whether to return the percentage of the
+    used hard disk, default: `False`.
+        - If `True`, the `unit` parameter is invalid and the
+          return value is the percentage of the used hard disk.
+        - If `False`, the return value is the used hard disk
+          size in corresponding size `unit`.
     """
 
     total, used, _ = _disk_usage("/")
@@ -197,7 +220,7 @@ def _convert_unit(size: int, unit: str) -> float:
 
 
 def local_ip() -> str | None:
-    """Return the local IP address of the computer"""
+    """Return the local IP address of the computer."""
 
     try:
         # Create a socket and connect to a remote server
@@ -213,14 +236,16 @@ def local_ip() -> str | None:
 
 
 def mac_address() -> str | None:
-    """Return the MAC address of the computer"""
+    """Return the MAC address of the computer."""
 
     ip_addr = local_ip()
     return _get_mac_address(ip=ip_addr) if ip_addr else None
 
 
 def sys_info() -> dict[str, str | int | float]:
-    """Return a full dict of system information of the computer"""
+    """Return a full dict of system information
+    of the computer.
+    """
 
     return {
         "os": os(),
@@ -235,6 +260,8 @@ def sys_info() -> dict[str, str | int | float]:
 
 
 def sys_uuid() -> str:
-    """Return a unique identifier of the computer in `md5` hash format based on `sys_info()`"""
+    """Return a unique identifier of the computer
+    in `md5` hash format based on `sys_info()`.
+    """
 
     return _md5(str(sys_info).encode("utf-8")).hexdigest()
