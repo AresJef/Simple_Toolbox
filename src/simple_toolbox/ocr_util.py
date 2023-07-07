@@ -17,13 +17,9 @@ class CaptchaReader:
     DEFAULT_LANGS: tuple[str] = ("en",)
 
     def __new__(cls, *langs: str, gpu: bool = True) -> CaptchaReader:
-        if not langs:
-            langs = cls.DEFAULT_LANGS
-
         if (_key := hash((langs, gpu))) not in cls.__instances:
             cls.__instances[_key] = super().__new__(cls)
             cls.__instances[_key].__init__(*langs, gpu=gpu)
-
         return cls.__instances[_key]
 
     def __init__(self, *langs: str, gpu: bool = True) -> None:
