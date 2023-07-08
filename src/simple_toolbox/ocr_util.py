@@ -84,3 +84,9 @@ class CaptchaReader:
 
     def __repr__(self) -> str:
         return "<CaptchaReader (langs=%s, gpu=%s)>" % (self.langs, self.gpu)
+
+    def __hash__(self) -> int:
+        return hash(self.__repr__())
+
+    def __eq__(self, __o: object) -> bool:
+        return hash(self) == hash(__o) if isinstance(__o, CaptchaReader) else False
