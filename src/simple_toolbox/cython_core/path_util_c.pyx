@@ -78,5 +78,3 @@ cpdef list list_directory(str path, tuple excludes):
             files.append(f)
 
     return files
-
- 

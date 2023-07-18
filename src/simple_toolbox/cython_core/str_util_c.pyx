@@ -166,4 +166,3 @@ cpdef str remove_indent(str text):
     if margin != "$NONE$":
         text = _re_sub(r"(?m)^" + margin, "", text)
     return text
-

@@ -20,9 +20,7 @@ def build_extension(cython_pkg: str) -> tuple[list[Extension]]:
             extra_compile_args=[
                 "-Wno-unreachable-code-fallthrough",
                 "-Wno-unused-function",
-            ]
-            if src.endswith("dt_parser_c.pyx")
-            else [],
+            ],
         )
         for name, src in zip(pyx_name, pyx_src)
     ]

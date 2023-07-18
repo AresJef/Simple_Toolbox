@@ -2404,9 +2404,18 @@ cdef class parser:
         if "day" not in repl:
             # If the default day exceeds the last day of the month, fall back
             # to the end of the month.
-            cyear = default.year if res.year == -1 else res.year
-            cmonth = default.month if res.month == -1 else res.month
-            cday = default.day if res.day == -1 else res.day
+            if res.year == -1:
+                cyear = default.year
+            else:
+                cyear = res.year
+            if res.month == -1:
+                cmonth = default.month
+            else:
+                cmonth = res.month
+            if res.day == -1:
+                cday = default.day
+            else:
+                cday = res.day
 
             if cday > monthrange(cyear, cmonth)[1]:
                 repl["day"] = monthrange(cyear, cmonth)[1]
@@ -2517,10 +2526,3 @@ cpdef parse_exacts(str val, tuple fmts):
             pass
 
     return None
-
-
-
-
-
-
-
