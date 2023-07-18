@@ -1,3 +1,5 @@
+# cython: language_level=3
+
 cpdef tuple round_away(double num, int decimals):
     cdef: 
         int factor = 10**decimals

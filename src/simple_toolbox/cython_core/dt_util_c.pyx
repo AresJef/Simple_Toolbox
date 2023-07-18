@@ -1,3 +1,5 @@
+# cython: language_level=3
+
 from math import floor
 from time import time as unix_time
 from datetime import datetime

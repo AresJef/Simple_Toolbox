@@ -1,3 +1,5 @@
+# cython: language_level=3
+
 cimport cython
 from re import sub as _re_sub
 from re import compile as _re_compile

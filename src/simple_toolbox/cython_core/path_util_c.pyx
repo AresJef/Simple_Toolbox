@@ -1,3 +1,5 @@
+# cython: language_level=3
+
 from os import listdir as os_listdir
 cimport cython
 

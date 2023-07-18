@@ -1,3 +1,5 @@
+# cython: language_level=3
+
 from io import StringIO
 from math import copysign
 from decimal import Decimal
